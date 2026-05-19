@@ -5,5 +5,20 @@
       "PowerShell(Get-Item *)",
       "PowerShell(Stop-Process *)"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "Set-Location 'C:\\Users\\lucas\\OneDrive\\Documentos\\ProjetoClaudeCode'; git add .; git diff --cached --quiet; if ($LASTEXITCODE -ne 0) { git commit -m ('auto: sync ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')); git push }",
+            "shell": "powershell",
+            "timeout": 30,
+            "statusMessage": "Sincronizando com GitHub..."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -29,3 +29,19 @@ Data flows one way: `data.py` → `app.py` → `charts.py` → rendered in `app.
 ## Dependencies
 
 `streamlit`, `yfinance`, `pandas`, `plotly` — all listed in `acoes-2025/requirements.txt`. No build step required.
+
+## GitHub Repository
+
+Repository: https://github.com/LucasCredidio/acoes-2025
+
+Changes are synced automatically to GitHub after every Claude response via a Stop hook configured in `.claude/settings.local.json`. The hook runs:
+
+```powershell
+git add .
+git diff --cached --quiet
+# if there are staged changes:
+git commit -m "auto: sync yyyy-MM-dd HH:mm"
+git push
+```
+
+To manage the hook, open `/hooks` in Claude Code. GitHub CLI (`gh`) is installed at `C:\Program Files\GitHub CLI\gh.exe` and authenticated as `LucasCredidio`.
